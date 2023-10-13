@@ -1,0 +1,12 @@
+body {
+  background-color: #4f4f4f;
+}
+
+.card-footer {
+  background-color: #f0ffff;
+}
+
+.generate-password {
+  background-color: #f0ffff;
+  color: #008b8b;
+}
