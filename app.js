@@ -6,6 +6,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+app.post('/generate', (req, res) => {
+  
+})
+
 app.listen(port, () => {
   console.log(`express server on http://localhost:${port}`)
 })
