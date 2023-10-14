@@ -1,20 +1,21 @@
 <div class="header p-3 mb-5 bg-secondary">
   <a class="nav-bar text-white" href="/" style="text-decoration: none">Random Password Generator</a>
 </div>
-<form action="/" method="post">
-  <div class="card w-50 mx-auto">
-    <div class="card-body">
-      <h2 class="card-title">
-        Random Password Generator
-        <i class="fa-solid fa-key"></i>
-      </h2>
-      <hr>
+
+<div class="card w-50 mx-auto">
+  <div class="card-body">
+    <h2 class="card-title">
+      Random Password Generator
+      <i class="fa-solid fa-key"></i>
+    </h2>
+    <hr>
+    <form action="/" method="POST">
       <div class="mb-3 row justify-content-between">
-        <label for="password-length" class="col-sm-4 col-form-label">
+        <label for="passwordLength" class="col-sm-4 col-form-label">
           Password Length
         </label>
         <div class="col-sm-8">
-          <input type="number" class="form-control" id="password-length" name="password-length" max="16" min="4">
+          <input type="number" class="form-control" id="passwordLength" name="passwordLength" max="16" min="4" value={{data.passwordLength}}>
           <div class="form-text">
             Length is available between 4 ~ 16
           </div>
@@ -25,8 +26,8 @@
           Include Lowercase Characters
         </span>
         <div class="form-check ms-2">
-          <input class="form-check-input" type="checkbox" value="" id="check-lowercase">
-          <label class="form-check-label" for="check-lowercase">
+          <input class="form-check-input" type="checkbox" name="lowercase" id="lowercase" {{#if data.lowercase}}checked{{/if}}>
+          <label class="form-check-label" for="lowercase">
             (e.g. abcdefg)
           </label>
         </div>
@@ -37,8 +38,8 @@
           Include Uppercase Characters
         </span>
         <div class="form-check ms-2">
-          <input class="form-check-input" type="checkbox" value="" id="check-uppercase">
-          <label class="form-check-label" for="check-uppercase">
+          <input class="form-check-input" type="checkbox" name="uppercase" id="uppercase" {{#if data.uppercase}}checked{{/if}}>
+          <label class="form-check-label" for="uppercase">
             (e.g. ABCDEFG)
           </label>
         </div>
@@ -48,8 +49,8 @@
           Include Numbers
         </span>
         <div class="form-check ms-2">
-          <input class="form-check-input" type="checkbox" value="" id="check-numbers">
-          <label class="form-check-label" for="check-numbers">
+          <input class="form-check-input" type="checkbox" name="numbers" id="numbers" {{#if data.numbers}}checked{{/if}}>
+          <label class="form-check-label" for="numbers">
             (e.g. 123456)
           </label>
         </div>
@@ -59,36 +60,37 @@
           Include Symbols
         </span>
         <div class="form-check ms-2">
-          <input class="form-check-input" type="checkbox" value="" id="check-symbols">
-          <label class="form-check-label" for="check-symbols">
+          <input class="form-check-input" type="checkbox" name="symbols" id="symbols" {{#if data.symbols}}checked{{/if}}>
+          <label class="form-check-label" for="symbols">
             (e.g. @#$%)
           </label>
         </div>
       </div>
       <div class="mb-3 row justify-content-between">
-        <label for="exclude-characters" class="col-sm-4 col-form-label">
+        <label for="excludeCharacters" class="col-sm-4 col-form-label">
           Exclude Characters
         </label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" id="exclude-characters" name="exclude-characters">
+          <input type="text" class="form-control" id="excludeCharacters" name="excludeCharacters" value={{data.excludeCharacters}}>
           <div class="form-text">
             These characters will not appear in the password
           </div>
         </div>
       </div>
-      <div class="generate-password p-3 mb-2 d-flex flex-nowrap">
-        <div>Your password is: </div>
-        <div class="text-danger ms-3">You must select at least one character set</div>
+      {{#if password}}
+      <div class="generate-password p-3 mb-2">  
+        <span>Your password is: <code class="text-danger ms-2">{{password}}</code></span>        
       </div>
+      {{/if}}
       <button type="submit" value="submit" class="btn btn-success mb-3">
         Generate Password
       </button>
-    </div>
-    <small class="card-footer text-muted text-end">
-      Idea is inspired by
-      <a href="https://passwordsgenerator.net/" class="fw-bold" target="_blank" style="text-decoration: none">
-        Strong Random password
-      </a>
-    </small>
+    </form>
   </div>
-</form>
+  <small class="card-footer text-muted text-end">
+    Idea is inspired by
+    <a href="https://passwordsgenerator.net/" class="fw-bold" target="_blank" style="text-decoration: none">
+      Strong Random password
+    </a>
+  </small>
+</div>
